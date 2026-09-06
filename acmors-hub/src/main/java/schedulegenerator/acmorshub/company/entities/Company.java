@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import schedulegenerator.acmorshub.product.entities.Product;
 import schedulegenerator.acmorshub.staff.entities.Staff;
 
 import java.util.List;
@@ -23,7 +24,11 @@ public class Company {
     private String email;
     private String phoneNumber;
     private String cnpj;
+    private boolean active;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Staff> staff;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products;
 }
