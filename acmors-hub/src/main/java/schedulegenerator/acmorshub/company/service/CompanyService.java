@@ -27,9 +27,13 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public Company update(Company company) {
-        var existsByName = companyRepository.existsCompaniesByName(company.getName());
-        return companyRepository.save(company);
+    public Company update(Company company, Long companyId) {
+        Company update = findById(companyId);
+        update.setName(company.getName());
+        update.setEmail(company.getEmail());
+        update.setPhoneNumber(company.getPhoneNumber());
+
+        return companyRepository.save(update);
     }
 
     public void delete(Company company) {
