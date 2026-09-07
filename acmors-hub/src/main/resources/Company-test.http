@@ -7,3 +7,31 @@ Content-Type: application/json
   "email": "companyB@gmail.com",
   "cnpj": "QLBY22FB000141"
 }
+
+###
+POST localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "COMPANY AUTO",
+  "phone": "151515151",
+  "email": "companyAuto@gmail.com",
+  "cnpj": "QLBY22FB000142"
+}
+
+###
+
+PUT localhost:8080/api/company/update/1
+Content-Type: application/json
+
+{
+  "name": "COMPANY C",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}
+
+###
+
+GET localhost:8080/api/company/name/COMPANY%20AUTO
+Content-Type: application/json

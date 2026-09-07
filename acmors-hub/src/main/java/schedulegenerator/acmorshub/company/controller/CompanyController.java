@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import schedulegenerator.acmorshub.company.dto.CreateCompany;
 import schedulegenerator.acmorshub.company.dto.ResponseCompany;
+import schedulegenerator.acmorshub.company.dto.UpdateCompany;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.service.CompanyService;
 
@@ -22,8 +23,12 @@ public class CompanyController {
     }
 
     @PutMapping("/update/{companyId}")
-    public ResponseEntity<Company> update(@PathVariable Long companyId, @RequestBody Company company) {
+    public ResponseEntity<ResponseCompany> update(@PathVariable Long companyId, @RequestBody UpdateCompany company) {
         return ResponseEntity.ok(companyService.update(company, companyId));
     }
 
+    @GetMapping("/name/{companyName}")
+    public ResponseEntity<ResponseCompany> getByName(@PathVariable String companyName) {
+        return ResponseEntity.ok(companyService.findCompanyByName(companyName));
+    }
 }

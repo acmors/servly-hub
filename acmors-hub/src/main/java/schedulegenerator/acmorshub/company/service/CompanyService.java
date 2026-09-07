@@ -1,11 +1,12 @@
 package schedulegenerator.acmorshub.company.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import schedulegenerator.acmorshub.company.dto.CompanyMapper;
 import schedulegenerator.acmorshub.company.dto.CreateCompany;
 import schedulegenerator.acmorshub.company.dto.ResponseCompany;
+import schedulegenerator.acmorshub.company.dto.UpdateCompany;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.repository.CompanyRepository;
 import java.util.List;
@@ -32,21 +33,32 @@ public class CompanyService {
         return CompanyMapper.toDto(created);
     }
 
+    @Transactional(readOnly = true)
     public Company findById(Long id) {
         return companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Company with id " + id + " not found"));
     }
 
+    @Transactional(readOnly = true)
     public List<Company> findAll() {
         return companyRepository.findAll();
     }
 
-    public Company update(Company company, Long companyId) {
+    @Transactional
+    public ResponseCompany update(UpdateCompany company, Long companyId) {
         Company update = findById(companyId);
         update.setName(company.getName());
         update.setEmail(company.getEmail());
-        update.setPhoneNumber(company.getPhoneNumber());
+        update.setPhoneNumber(company.getPhone());
+        update.setCnpj(company.getCnpj());
 
-        return companyRepository.save(update);
+        var updated = companyRepository.save(update);
+        return CompanyMapper.toDto(updated);
+    }
+
+    @Transactional(readOnly = true)
+    public ResponseCompany findCompanyByName(String name) {
+        var find = companyRepository.findCompanyByName(name).orElseThrow(() -> new RuntimeException("Company with name " + name + " not found"));
+        return CompanyMapper.toDto(find);
     }
 
     public void delete(Company company) {
