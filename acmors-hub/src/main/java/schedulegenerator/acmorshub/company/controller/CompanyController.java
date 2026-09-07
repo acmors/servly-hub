@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import schedulegenerator.acmorshub.company.dto.CreateCompany;
+import schedulegenerator.acmorshub.company.dto.ResponseCompany;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.service.CompanyService;
 
@@ -15,7 +17,7 @@ public class CompanyController {
     private final CompanyService companyService;
 
     @PostMapping
-    public ResponseEntity<Company> create(@RequestBody Company company) {
+    public ResponseEntity<ResponseCompany> create(@RequestBody CreateCompany company) {
         return ResponseEntity.status(HttpStatus.CREATED).body(companyService.create(company));
     }
 

@@ -1,0 +1,9 @@
+POST localhost:8080/api/company
+Content-Type: application/json
+
+{
+  "name": "COMPANY B",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}

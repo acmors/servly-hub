@@ -1,7 +1,11 @@
 package schedulegenerator.acmorshub.company.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import schedulegenerator.acmorshub.company.dto.CompanyMapper;
+import schedulegenerator.acmorshub.company.dto.CreateCompany;
+import schedulegenerator.acmorshub.company.dto.ResponseCompany;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.repository.CompanyRepository;
 import java.util.List;
@@ -12,11 +16,20 @@ public class CompanyService {
 
     private final CompanyRepository companyRepository;
 
-    public Company create(Company company) {
-        var existsByName = companyRepository.existsCompaniesByName(company.getName());
-        if (existsByName) throw new RuntimeException("Company with name " + company.getName() + " already exists");
+    @Transactional
+    public ResponseCompany create(CreateCompany create) {
+        boolean existsByName = companyRepository.existsCompaniesByName(create.getName());
+        if (existsByName) throw new RuntimeException("Company with name " + create.getName() + " already exists");
 
-        return companyRepository.save(company);
+        Company company = new Company();
+        company.setName(create.getName());
+        company.setPhoneNumber(create.getPhone());
+        company.setEmail(create.getEmail());
+        company.setCnpj(create.getCnpj());
+
+        var created = companyRepository.save(company);
+
+        return CompanyMapper.toDto(created);
     }
 
     public Company findById(Long id) {
