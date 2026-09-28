@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import schedulegenerator.acmorshub.company.dto.CreateCompany;
 import schedulegenerator.acmorshub.company.dto.ResponseCompany;
 import schedulegenerator.acmorshub.company.dto.UpdateCompany;
-import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.service.CompanyService;
 
 @RestController

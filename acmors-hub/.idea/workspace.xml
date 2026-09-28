@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d67b90c1-4b06-4310-b229-ec1f7f1d6fc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ProductItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ProductOrder.java" afterDir="false" />
-    </list>
+    <list default="true" id="d67b90c1-4b06-4310-b229-ec1f7f1d6fc8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +138,7 @@
       <workItem from="1788800295391" duration="6940000" />
       <workItem from="1790031345778" duration="2962000" />
       <workItem from="1790206705388" duration="432000" />
-      <workItem from="1790207191113" duration="1701000" />
+      <workItem from="1790207191113" duration="2003000" />
     </task>
     <servers />
   </component>
