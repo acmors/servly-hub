@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d67b90c1-4b06-4310-b229-ec1f7f1d6fc8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ServiceOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ServiceOrderItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ProductItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/schedulegenerator/acmorshub/product/entities/ProductOrder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +147,7 @@
       <workItem from="1790207191113" duration="2003000" />
       <workItem from="1790632675469" duration="776000" />
       <workItem from="1790729541811" duration="612000" />
+      <workItem from="1790802269886" duration="2551000" />
     </task>
     <servers />
   </component>
