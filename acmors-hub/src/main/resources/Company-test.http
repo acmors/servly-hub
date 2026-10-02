@@ -35,3 +35,44 @@ Content-Type: application/json
 
 GET localhost:8080/api/company/name/COMPANY%20AUTO
 Content-Type: application/json
+
+###
+#STAFF
+
+POST localhost:8080/api/staff
+Content-Type: application/json
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}
+
+###
+#Service-Order
+
+POST localhost:8080/api/service-order
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}

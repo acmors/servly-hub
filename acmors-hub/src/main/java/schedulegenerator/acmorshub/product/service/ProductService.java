@@ -15,12 +15,20 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    @Transactional
     public ResponseProduct create(CreateProduct createProduct) {
+
+        System.out.println("DTO");
+        System.out.println(createProduct.getName());
+        System.out.println(createProduct.getDescription());
+
         Product product = new Product();
         product.setName(createProduct.getName());
         product.setPrice(createProduct.getPrice());
         product.setDescription(createProduct.getDescription());
+
+        System.out.println("Antes do SAVE");
+        System.out.println(product.getName());
+        System.out.println(product.getDescription());
         productRepository.save(product);
 
         return ProductMapper.toDto(product);

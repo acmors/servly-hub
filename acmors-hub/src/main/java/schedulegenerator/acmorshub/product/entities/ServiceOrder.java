@@ -39,7 +39,12 @@ public class ServiceOrder {
     private String note;
 
     @OneToMany(mappedBy = "serviceOrder", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ServiceOrderItem> productOrderList = new ArrayList<>();
+    private List<ServiceOrderItem> items = new ArrayList<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public void addItem(ServiceOrderItem item) {
+        items.add(item);
+        item.setServiceOrder(this);
+    }
 }

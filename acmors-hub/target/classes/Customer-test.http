@@ -1,0 +1,10 @@
+POST localhost:8080/api/customer
+Content-Type: application/json
+
+{
+  "FullName": "PEDRAO",
+  "Document":"",
+  "Email":"",
+  "Password":"",
+  "Phone":""
+}

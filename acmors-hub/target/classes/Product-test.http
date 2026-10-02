@@ -1,0 +1,7 @@
+POST localhost:8080/api/product
+Content-Type: application/json
+
+{
+  "name": "Troca de Tomadas",
+  "description":"Trocar tomas, adicionar tomadas, puxar tomadas"
+}
