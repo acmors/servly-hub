@@ -22,7 +22,8 @@ public class ServiceOrderMapper {
                 serviceOrder.getNote(),
                 items,
                 serviceOrder.getCreatedAt(),
-                serviceOrder.getUpdatedAt()
+                serviceOrder.getUpdatedAt(),
+                serviceOrder.getTotalPrice()
         );
     }
 }

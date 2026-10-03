@@ -18,6 +18,9 @@ import schedulegenerator.acmorshub.product.repository.ServiceOrderRepository;
 import schedulegenerator.acmorshub.staff.entities.Staff;
 import schedulegenerator.acmorshub.staff.repository.StaffRepository;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class ServiceOrderService {
@@ -44,6 +47,7 @@ public class ServiceOrderService {
         serviceOrder.setStaff(staff);
         serviceOrder.setNote(create.getNote());
         serviceOrder.setCompany(company);
+        serviceOrder.setCreatedAt(LocalDateTime.now());
 
         for(CreateOrderServiceItem itemRequest : create.getItems()){
 
@@ -58,7 +62,9 @@ public class ServiceOrderService {
 
             serviceOrder.addItem(item);
         }
+        BigDecimal totalPrice = serviceOrder.calculateTotalPrice();
 
+        serviceOrder.setTotalPrice(totalPrice);
         var saved = serviceOrderRepository.save(serviceOrder);
         return ServiceOrderMapper.toDTO(saved);
     }

@@ -31,4 +31,9 @@ public class ServiceOrderItem {
     private BigDecimal unitPrice;
     private BigDecimal discount;
 
+    public BigDecimal totalPrice() {
+        BigDecimal subtotal = unitPrice.multiply(BigDecimal.valueOf(quantity));
+        return subtotal.subtract(discount);
+    }
+
 }

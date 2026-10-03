@@ -1,0 +1,8 @@
+POST localhost:8080/api/staff
+Content-Type: application/json
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}

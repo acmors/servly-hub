@@ -9,6 +9,7 @@ import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.customer.entities.Customer;
 import schedulegenerator.acmorshub.staff.entities.Staff;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +44,17 @@ public class ServiceOrder {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    private BigDecimal totalPrice;
+
     public void addItem(ServiceOrderItem item) {
         items.add(item);
         item.setServiceOrder(this);
     }
+
+    public BigDecimal calculateTotalPrice() {
+        return items.stream()
+                .map(ServiceOrderItem::totalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
 }
