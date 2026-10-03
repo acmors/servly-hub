@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
+
+import java.math.BigDecimal;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateServiceOrder {
-    private Long customerId;
-    private Long companyId;
-    private Long staffId;
-    private String note;
-    private List<CreateOrderServiceItem> items;
+public class OrderServiceItemResponse {
+    private Long productId;
+    private Integer quantity;
+    private BigDecimal discount;
 }

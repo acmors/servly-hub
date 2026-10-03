@@ -8,6 +8,8 @@ import schedulegenerator.acmorshub.customer.entities.Customer;
 import schedulegenerator.acmorshub.customer.repository.CustomerRepository;
 import schedulegenerator.acmorshub.product.dto.CreateOrderServiceItem;
 import schedulegenerator.acmorshub.product.dto.CreateServiceOrder;
+import schedulegenerator.acmorshub.product.dto.ServiceOrderMapper;
+import schedulegenerator.acmorshub.product.dto.ServiceOrderResponse;
 import schedulegenerator.acmorshub.product.entities.Product;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
 import schedulegenerator.acmorshub.product.entities.ServiceOrderItem;
@@ -26,7 +28,7 @@ public class ServiceOrderService {
     private final StaffRepository staffRepository;
     private final CompanyRepository companyRepository;
 
-    public ServiceOrder createOrder(CreateServiceOrder create) {
+    public ServiceOrderResponse createOrder(CreateServiceOrder create) {
 
         Customer customer = customerRepository.findById(create.getCustomerId())
                 .orElseThrow(() -> new RuntimeException("Customer Not Found"));
@@ -57,6 +59,7 @@ public class ServiceOrderService {
             serviceOrder.addItem(item);
         }
 
-        return serviceOrderRepository.save(serviceOrder);
+        var saved = serviceOrderRepository.save(serviceOrder);
+        return ServiceOrderMapper.toDTO(saved);
     }
 }

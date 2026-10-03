@@ -4,16 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import schedulegenerator.acmorshub.product.entities.ServiceOrderItem;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateServiceOrder {
-    private Long customerId;
+public class ServiceOrderResponse {
+
     private Long companyId;
+    private Long customerId;
     private Long staffId;
     private String note;
-    private List<CreateOrderServiceItem> items;
+    private List<OrderServiceItemResponse> createOrderServiceItems;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

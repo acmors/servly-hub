@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import schedulegenerator.acmorshub.product.dto.CreateOrderServiceItem;
 import schedulegenerator.acmorshub.product.dto.CreateServiceOrder;
-import schedulegenerator.acmorshub.product.entities.ServiceOrder;
+import schedulegenerator.acmorshub.product.dto.ServiceOrderResponse;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
 
 @RestController
@@ -20,7 +19,7 @@ public class ServiceOrderController {
     private final ServiceOrderService serviceOrderService;
 
     @PostMapping
-    public ResponseEntity<ServiceOrder> createOrder(@RequestBody CreateServiceOrder createServiceOrder) {
+    public ResponseEntity<ServiceOrderResponse> createOrder(@RequestBody CreateServiceOrder createServiceOrder) {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceOrderService.createOrder(createServiceOrder));
     }
 }
