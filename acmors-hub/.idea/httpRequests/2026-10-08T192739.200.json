@@ -1,0 +1,5 @@
+{
+  "webhookUrl": "http://host.docker.internal:8081/api/webhooks/pix",
+  "chave": "dev@example.com",
+  "criacao": "2026-10-08T22:07:58.998Z"
+}

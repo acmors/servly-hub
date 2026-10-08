@@ -1,0 +1,789 @@
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T195606.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T195604.200.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+<> 2026-10-08T195602.200.json
+
+###
+
+POST http://localhost:8081/api/service-order
+Content-Type: application/json
+Content-Length: 301
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}
+
+<> 2026-10-08T195558.201.json
+
+###
+
+POST http://localhost:8081/api/product
+Content-Type: application/json
+Content-Length: 116
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Troca de Tomadas",
+  "description":"Trocar tomas, adicionar tomadas, puxar tomadas",
+  "price": 50.00
+}
+
+<> 2026-10-08T195556.201.json
+
+###
+
+POST http://localhost:8081/api/customer
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "FullName": "PEDRAO",
+  "Document":"",
+  "Email":"",
+  "Password":"",
+  "Phone":""
+}
+
+<> 2026-10-08T195554.201.json
+
+###
+
+POST http://localhost:8081/api/staff
+Content-Type: application/json
+Content-Length: 86
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}
+
+<> 2026-10-08T195552.201.json
+
+###
+
+POST http://localhost:8081/api/company
+Content-Type: application/json
+Content-Length: 110
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "COMPANY B",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}
+
+<> 2026-10-08T195548.201.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T194458.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T194454.200.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+<> 2026-10-08T194452.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T194448.500.json
+
+###
+
+POST http://localhost:8081/api/service-order
+Content-Type: application/json
+Content-Length: 301
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}
+
+<> 2026-10-08T194445.201.json
+
+###
+
+POST http://localhost:8081/api/product
+Content-Type: application/json
+Content-Length: 116
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Troca de Tomadas",
+  "description":"Trocar tomas, adicionar tomadas, puxar tomadas",
+  "price": 50.00
+}
+
+<> 2026-10-08T194442.201.json
+
+###
+
+POST http://localhost:8081/api/customer
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "FullName": "PEDRAO",
+  "Document":"",
+  "Email":"",
+  "Password":"",
+  "Phone":""
+}
+
+<> 2026-10-08T194440.201.json
+
+###
+
+POST http://localhost:8081/api/staff
+Content-Type: application/json
+Content-Length: 86
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}
+
+<> 2026-10-08T194436.201.json
+
+###
+
+POST http://localhost:8081/api/company
+Content-Type: application/json
+Content-Length: 110
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "COMPANY B",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}
+
+<> 2026-10-08T194434.201.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T194000.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T193953.200.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+<> 2026-10-08T193947.200.json
+
+###
+
+POST http://localhost:8081/api/service-order
+Content-Type: application/json
+Content-Length: 301
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}
+
+<> 2026-10-08T193940.201.json
+
+###
+
+POST http://localhost:8081/api/product
+Content-Type: application/json
+Content-Length: 116
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Troca de Tomadas",
+  "description":"Trocar tomas, adicionar tomadas, puxar tomadas",
+  "price": 50.00
+}
+
+<> 2026-10-08T193937.201.json
+
+###
+
+POST http://localhost:8081/api/customer
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "FullName": "PEDRAO",
+  "Document":"",
+  "Email":"",
+  "Password":"",
+  "Phone":""
+}
+
+<> 2026-10-08T193935.201.json
+
+###
+
+POST http://localhost:8081/api/staff
+Content-Type: application/json
+Content-Length: 86
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}
+
+<> 2026-10-08T193932.201.json
+
+###
+
+POST http://localhost:8081/api/company
+Content-Type: application/json
+Content-Length: 110
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "COMPANY B",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}
+
+<> 2026-10-08T193930.201.json
+
+###
+
+GET http://localhost:8081/api/payments/2
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T193630.200.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T193624.200.json
+
+###
+
+POST http://localhost:8081/api/payments/2/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T193616.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T193609.500.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T193604.500.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 2,
+  "method": "PIX"
+}
+
+<> 2026-10-08T193549.200.json
+
+###
+
+POST http://localhost:8081/api/service-order
+Content-Type: application/json
+Content-Length: 301
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}
+
+<> 2026-10-08T193543.201.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192938.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T192933.200.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+<> 2026-10-08T192931.200.json
+
+###
+
+POST http://localhost:8081/api/service-order
+Content-Type: application/json
+Content-Length: 301
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "customerId": 1,
+  "companyId": 1,
+  "staffId": 1,
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "discount": 0
+    },
+    {
+      "productId": 1,
+      "quantity": 1,
+      "discount": 5
+    },
+    {
+      "productId": 1,
+      "quantity": 3,
+      "discount": 10
+    }
+  ]
+}
+
+<> 2026-10-08T192926.201.json
+
+###
+
+POST http://localhost:8081/api/product
+Content-Type: application/json
+Content-Length: 116
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Troca de Tomadas",
+  "description":"Trocar tomas, adicionar tomadas, puxar tomadas",
+  "price": 50.00
+}
+
+<> 2026-10-08T192924.201.json
+
+###
+
+POST http://localhost:8081/api/customer
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "FullName": "PEDRAO",
+  "Document":"",
+  "Email":"",
+  "Password":"",
+  "Phone":""
+}
+
+<> 2026-10-08T192921.201.json
+
+###
+
+POST http://localhost:8081/api/staff
+Content-Type: application/json
+Content-Length: 86
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Marcos Antonio",
+  "email": "marcosantonio@gmail.com",
+  "companyId": 1
+}
+
+<> 2026-10-08T192918.201.json
+
+###
+
+POST http://localhost:8081/api/company
+Content-Type: application/json
+Content-Length: 110
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "COMPANY B",
+  "phone": "151515151",
+  "email": "companyB@gmail.com",
+  "cnpj": "QLBY22FB000141"
+}
+
+<> 2026-10-08T192906.201.json
+
+###
+
+GET http://localhost:8080/webhook/dev@example.com
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192739.200.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192734.200.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192730.200.json
+
+###
+
+GET http://localhost:8080/webhook/dev@example.com
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192718.200.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192608.200.json
+
+###
+
+POST http://localhost:8081/api/test/pix/charge
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T192603.200.json
+
+###
+
+POST http://localhost:8081/api/payments/1/pay
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T192600.200.json
+
+###
+
+POST http://localhost:8081/api/payments
+Content-Type: application/json
+Content-Length: 44
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+<> 2026-10-08T192557.200.json
+
+###
+
+GET http://localhost:8081/api/payments/1
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-10-08T192546.500.json
+
+###
+
+POST http://localhost:8081/api/test/pix/charge
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2026.1.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2026-10-08T192542.200.json
+
+###
+

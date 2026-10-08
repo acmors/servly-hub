@@ -14,6 +14,7 @@ import schedulegenerator.acmorshub.payment.repository.PaymentRepository;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
@@ -29,7 +30,6 @@ public class PaymentService {
         ServiceOrder serviceOrder =serviceOrderService.findById(createPayment.getServiceOrderId());
 
         Payment payment = new Payment();
-
         payment.setServiceOrder(serviceOrder);
         payment.setPaymentMethod(createPayment.getMethod());
         payment.setPaymentStatus(PaymentStatus.PENDING);
@@ -42,7 +42,7 @@ public class PaymentService {
                                 .getTotalPrice()
                                 .setScale(2)
                                 .toPlainString()
-                        ), "dev@test.com"
+                        ), "dev@example.com"
         );
 
         PixChargeResponse pixChargeResponse = pixClient.charge(request);
@@ -57,5 +57,31 @@ public class PaymentService {
          Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
          pixClient.pay(payment.getProviderTransactionId());
          return PaymentMapper.toDTO(payment);
+    }
+
+    public void confirmPayment(String txid, String receivedAmount) {
+        Payment payment = paymentRepository.findByProviderTransactionId(txid)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+
+        BigDecimal amount = new BigDecimal(receivedAmount);
+
+        if (payment.getAmount().compareTo(amount) != 0) {
+            throw new RuntimeException("Valor recebido não é igual ao pagamento");
+        }
+
+        if (payment.getPaymentStatus().equals(PaymentStatus.PAID)) {
+            return;
+        }
+
+        payment.setPaymentStatus(PaymentStatus.PAID);
+        payment.setPaidAt(LocalDateTime.now());
+
+        paymentRepository.save(payment);
+    }
+
+    public ResponsePayment getPayment(Long paymentId) {
+        Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
+
+        return PaymentMapper.toDTO(payment);
     }
 }

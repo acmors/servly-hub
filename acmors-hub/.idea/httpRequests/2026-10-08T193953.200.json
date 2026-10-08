@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "paymentMethod": "PIX",
+  "pixCopyPaste": "00020101021226370014br.gov.bcb.pix0115dev@exemplo.com5204000053039865406285.005802BR5911PIX SANDBOX6009SAO PAULO62360532mWSCJCtzsU65ZK46eNcPW7QQvubeWjpX6304BFE7",
+  "paymentStatus": "PENDING",
+  "amount": 285.00,
+  "createdAt": "08/10/2026 19:39:47",
+  "paidAt": null
+}

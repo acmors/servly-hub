@@ -1,11 +1,9 @@
-POST localhost:8081/api/service-order
-Content-Type: application/json
-
 {
-  "customerId": 1,
   "companyId": 1,
+  "customerId": 1,
   "staffId": 1,
-  "items": [
+  "note": null,
+  "createOrderServiceItems": [
     {
       "productId": 1,
       "quantity": 2,
@@ -21,5 +19,8 @@ Content-Type: application/json
       "quantity": 3,
       "discount": 10
     }
-  ]
+  ],
+  "createdAt": "2026-10-08T19:35:43.2608781",
+  "updatedAt": null,
+  "totalPrice": 285.00
 }

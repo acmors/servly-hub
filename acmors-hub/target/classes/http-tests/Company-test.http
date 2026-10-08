@@ -1,4 +1,4 @@
-POST localhost:8080/api/company
+POST localhost:8081/api/company
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-POST localhost:8080/api/company
+POST localhost:8081/api/company
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-PUT localhost:8080/api/company/update/1
+PUT localhost:8081/api/company/update/1
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ###
 
-GET localhost:8080/api/company/name/COMPANY%20AUTO
+GET localhost:8081/api/company/name/COMPANY%20AUTO
 Content-Type: application/json
 
 
