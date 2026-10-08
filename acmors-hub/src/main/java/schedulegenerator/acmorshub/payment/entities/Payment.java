@@ -35,6 +35,11 @@ public class Payment {
     private PaymentStatus paymentStatus;
 
     private BigDecimal amount;
+    private String providerTransactionId;
+
+    @Column(length = 2000)
+    private String pixCopyPaste;
+
     private LocalDateTime createAt;
     private LocalDateTime paidAt;
 }

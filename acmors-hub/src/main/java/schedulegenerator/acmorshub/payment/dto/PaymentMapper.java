@@ -8,7 +8,9 @@ public class PaymentMapper {
 
     public static ResponsePayment toDTO(Payment payment) {
         return new ResponsePayment(
+                payment.getId(),
                 payment.getPaymentMethod(),
+                payment.getPixCopyPaste(),
                 payment.getPaymentStatus(),
                 payment.getAmount(),
                 payment.getCreateAt(),

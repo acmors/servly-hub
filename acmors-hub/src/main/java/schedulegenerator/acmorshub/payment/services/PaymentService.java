@@ -7,6 +7,9 @@ import schedulegenerator.acmorshub.payment.dto.PaymentMapper;
 import schedulegenerator.acmorshub.payment.dto.ResponsePayment;
 import schedulegenerator.acmorshub.payment.entities.Payment;
 import schedulegenerator.acmorshub.payment.entities.enums.PaymentStatus;
+import schedulegenerator.acmorshub.payment.integration.pix.PixChargeRequest;
+import schedulegenerator.acmorshub.payment.integration.pix.PixChargeResponse;
+import schedulegenerator.acmorshub.payment.integration.pix.PixClient;
 import schedulegenerator.acmorshub.payment.repository.PaymentRepository;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
@@ -19,6 +22,7 @@ public class PaymentService {
 
     private final PaymentRepository paymentRepository;
     private final ServiceOrderService serviceOrderService;
+    private final PixClient pixClient;
 
     public ResponsePayment createPayment(CreatePayment createPayment) {
         //Busca ordem de pagamento
@@ -32,7 +36,26 @@ public class PaymentService {
         payment.setCreateAt(LocalDateTime.now());
         payment.setAmount(serviceOrder.getTotalPrice());
 
+        PixChargeRequest request = new PixChargeRequest(
+                new PixChargeRequest.Amount(
+                        serviceOrder
+                                .getTotalPrice()
+                                .setScale(2)
+                                .toPlainString()
+                        ), "dev@test.com"
+        );
+
+        PixChargeResponse pixChargeResponse = pixClient.charge(request);
+        payment.setProviderTransactionId(pixChargeResponse.getTxid());
+        payment.setPixCopyPaste(pixChargeResponse.getPixCopiaECola());
+
         Payment create =  paymentRepository.save(payment);
         return PaymentMapper.toDTO(create);
+    }
+
+    public ResponsePayment pay(Long paymentId) {
+         Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
+         pixClient.pay(payment.getProviderTransactionId());
+         return PaymentMapper.toDTO(payment);
     }
 }

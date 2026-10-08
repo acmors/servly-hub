@@ -1,10 +1,18 @@
-POST localhost:8080/api/payments
+POST localhost:8081/api/payments
 Content-Type: application/json
 
 {
-  "serviceOrderId": 1,
+  "serviceOrderId": 2,
   "method": "PIX"
 }
+
+###
+POST localhost:8081/api/payments/2/pay
+Content-Type: application/json
+
+###
+POST localhost:8081/api/test/pix/charge
+Content-Type: application/json
 
 
 

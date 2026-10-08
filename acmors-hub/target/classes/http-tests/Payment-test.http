@@ -6,6 +6,14 @@ Content-Type: application/json
   "method": "PIX"
 }
 
+###
+POST localhost:8080/api/payments/1/pay
+Content-Type: application/json
+
+###
+POST localhost:8081/api/test/pix/charge
+Content-Type: application/json
+
 
 
 
