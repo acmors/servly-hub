@@ -1,0 +1,11 @@
+POST localhost:8080/api/payments
+Content-Type: application/json
+
+{
+  "serviceOrderId": 1,
+  "method": "PIX"
+}
+
+
+
+

@@ -68,4 +68,9 @@ public class ServiceOrderService {
         var saved = serviceOrderRepository.save(serviceOrder);
         return ServiceOrderMapper.toDTO(saved);
     }
+
+    public ServiceOrder findById(Long id) {
+        return serviceOrderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order Not Found"));
+    }
 }
