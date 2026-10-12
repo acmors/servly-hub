@@ -1,33 +1,74 @@
 package schedulegenerator.acmorshub.payment.services;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
+import schedulegenerator.acmorshub.exceptions.ResourceNotFoundExeption;
 import schedulegenerator.acmorshub.payment.dto.CreatePayment;
 import schedulegenerator.acmorshub.payment.dto.PaymentMapper;
 import schedulegenerator.acmorshub.payment.dto.ResponsePayment;
 import schedulegenerator.acmorshub.payment.entities.Payment;
 import schedulegenerator.acmorshub.payment.entities.enums.PaymentStatus;
-import schedulegenerator.acmorshub.payment.integration.pix.PixChargeRequest;
-import schedulegenerator.acmorshub.payment.integration.pix.PixChargeResponse;
-import schedulegenerator.acmorshub.payment.integration.pix.PixClient;
+import schedulegenerator.acmorshub.payment.integration.asaas.AsaasCustomerService;
 import schedulegenerator.acmorshub.payment.repository.PaymentRepository;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
     private final ServiceOrderService serviceOrderService;
+    private final AsaasCustomerService asaasCustomerService;
     private final PixClient pixClient;
+    private final RestClient restClient;
+
+    public PaymentService(PaymentRepository paymentRepository, ServiceOrderService serviceOrderService, AsaasCustomerService asaasCustomerService, PixClient pixClient, @Qualifier("asaasRestClient") RestClient restClient) {
+        this.paymentRepository = paymentRepository;
+        this.serviceOrderService = serviceOrderService;
+        this.asaasCustomerService = asaasCustomerService;
+        this.pixClient = pixClient;
+        this.restClient = restClient;
+    }
 
     public ResponsePayment createPayment(CreatePayment createPayment) {
         //Busca ordem de pagamento
         ServiceOrder serviceOrder =serviceOrderService.findById(createPayment.getServiceOrderId());
+
+        //Busca ou cria cliente no Asaas
+        String asaasCustomId = asaasCustomerService.getOrCreateAsaasCustomer(serviceOrder.getCustomer());
+
+
+        //função que monta os dados que serão enviados para o Asaas
+        Map<String, Object> request = Map.of(
+                "customer", asaasCustomId,
+                "billingType", "PIX",
+                "value", serviceOrder.getTotalPrice(),
+                "dueDate", LocalDateTime.now().plusDays(1).toString()
+        );
+
+        //função que vai enviar a cobrança para o Asaas
+        Map<?,?> response = restClient.post()
+                .uri("/payments")
+                .body(request)
+                .retrieve()
+                .body(Map.class);
+
+        //Valida o retorno do response
+        if(response == null || response.get("id").toString() == null){
+            throw new IllegalArgumentException("O Asaas não retornou o identificador da cobrança");
+        }
+        String asaasPaymentId = response.get("id").toString();
+
+        //Busca QRCode e Copia e Cola
+        Map<?,?> pixResponse = restClient.get()
+                .uri("/payments/{id}/pixQrCode", asaasPaymentId)
+                .retrieve()
+                .body(Map.class);
 
         Payment payment = new Payment();
         payment.setServiceOrder(serviceOrder);
@@ -35,19 +76,12 @@ public class PaymentService {
         payment.setPaymentStatus(PaymentStatus.PENDING);
         payment.setCreateAt(LocalDateTime.now());
         payment.setAmount(serviceOrder.getTotalPrice());
+        payment.setProviderTransactionId(asaasPaymentId);
 
-        PixChargeRequest request = new PixChargeRequest(
-                new PixChargeRequest.Amount(
-                        serviceOrder
-                                .getTotalPrice()
-                                .setScale(2)
-                                .toPlainString()
-                        ), "dev@example.com"
-        );
-
-        PixChargeResponse pixChargeResponse = pixClient.charge(request);
-        payment.setProviderTransactionId(pixChargeResponse.getTxid());
-        payment.setPixCopyPaste(pixChargeResponse.getPixCopiaECola());
+        //Se o PixResponse nao foi null, vamos ter o Copia e Cola e o QrCode
+        if (pixResponse != null && pixResponse.get("payload") != null){
+            payment.setPixCopyPaste(pixResponse.get("payload").toString());
+        }
 
         Payment create =  paymentRepository.save(payment);
         return PaymentMapper.toDTO(create);
@@ -80,7 +114,7 @@ public class PaymentService {
     }
 
     public ResponsePayment getPayment(Long paymentId) {
-        Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
+        Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new ResourceNotFoundExeption("Payment not found"));
 
         return PaymentMapper.toDTO(payment);
     }

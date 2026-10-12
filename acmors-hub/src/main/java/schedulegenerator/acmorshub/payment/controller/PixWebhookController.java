@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import schedulegenerator.acmorshub.payment.integration.pix.PixWebhookRequest;
 import schedulegenerator.acmorshub.payment.services.PaymentService;
 import schedulegenerator.acmorshub.payment.utils.PixWebhookSignatureValidator;
 import tools.jackson.databind.ObjectMapper;

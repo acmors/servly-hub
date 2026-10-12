@@ -20,9 +20,6 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ResponseProduct> create(@RequestBody CreateProduct createProduct){
-        System.out.println("CONTROLLER");
-        System.out.println(createProduct.getName());
-        System.out.println(createProduct.getDescription());
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(createProduct));
     }
 }

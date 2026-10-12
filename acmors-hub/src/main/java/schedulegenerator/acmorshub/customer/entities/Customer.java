@@ -25,4 +25,6 @@ public class Customer {
     private String Email;
     private String Password;
     private String Phone;
+    //Id que seria criado pelo serviço de pagamento externo
+    private String asaasCustomerId;
 }

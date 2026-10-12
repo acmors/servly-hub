@@ -15,3 +15,7 @@ spring:
 pix:
   webhook:
     secret: pix-sandbox
+
+asaas:
+  base-url: https://api-sandbox.asaas.com/v3
+  api-key:

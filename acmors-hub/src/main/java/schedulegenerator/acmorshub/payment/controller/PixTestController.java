@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import schedulegenerator.acmorshub.payment.integration.pix.PixChargeRequest;
 import schedulegenerator.acmorshub.payment.integration.pix.PixChargeResponse;
-import schedulegenerator.acmorshub.payment.integration.pix.PixClient;
 
 @RestController
 @RequestMapping("/api/test/pix")
