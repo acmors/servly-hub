@@ -24,14 +24,12 @@ public class PaymentService {
     private final PaymentRepository paymentRepository;
     private final ServiceOrderService serviceOrderService;
     private final AsaasCustomerService asaasCustomerService;
-    private final PixClient pixClient;
     private final RestClient restClient;
 
-    public PaymentService(PaymentRepository paymentRepository, ServiceOrderService serviceOrderService, AsaasCustomerService asaasCustomerService, PixClient pixClient, @Qualifier("asaasRestClient") RestClient restClient) {
+    public PaymentService(PaymentRepository paymentRepository, ServiceOrderService serviceOrderService, AsaasCustomerService asaasCustomerService, @Qualifier("asaasRestClient") RestClient restClient) {
         this.paymentRepository = paymentRepository;
         this.serviceOrderService = serviceOrderService;
         this.asaasCustomerService = asaasCustomerService;
-        this.pixClient = pixClient;
         this.restClient = restClient;
     }
 
@@ -48,7 +46,7 @@ public class PaymentService {
                 "customer", asaasCustomId,
                 "billingType", "PIX",
                 "value", serviceOrder.getTotalPrice(),
-                "dueDate", LocalDateTime.now().plusDays(1).toString()
+                "dueDate", java.time.LocalDate.now().plusDays(1).toString()
         );
 
         //função que vai enviar a cobrança para o Asaas
@@ -88,9 +86,32 @@ public class PaymentService {
     }
 
     public ResponsePayment pay(Long paymentId) {
-         Payment payment = paymentRepository.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment not found"));
-         pixClient.pay(payment.getProviderTransactionId());
-         return PaymentMapper.toDTO(payment);
+         Payment payment = paymentRepository.findById(paymentId)
+                 .orElseThrow(() -> new ResourceNotFoundExeption("Payment not found"));
+
+        System.out.println("Asaas URL base: https://api-sandbox.asaas.com/v3");
+        System.out.println("ID local do pagamento: " + payment.getId());
+        System.out.println("ID da cobrança no Asaas: "
+                + payment.getProviderTransactionId());
+
+         //valida se o status do pagamento é igual a PAGO
+         if(payment.getPaymentStatus().equals(PaymentStatus.PAID)){
+             //caso seja vai retornar os dados do pagamento
+             return PaymentMapper.toDTO(payment);
+         }
+
+         //faz uma requisição POST na API do ASAAS para confirmar um determinado pagamento via Id.
+         restClient.post()
+                 .uri("/sandbox/payment/{id}/confirm", payment.getProviderTransactionId())
+                 .retrieve()
+                 .toBodilessEntity();
+
+         //agora retorna os dados do pagamento depois de confirmado
+         return PaymentMapper.toDTO(
+                 paymentRepository.findById(paymentId)
+                         .orElseThrow(() -> new ResourceNotFoundExeption("Payment not found"))
+         );
+
     }
 
     public void confirmPayment(String txid, String receivedAmount) {

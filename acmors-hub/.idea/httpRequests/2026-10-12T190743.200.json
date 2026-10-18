@@ -1,9 +1,0 @@
-{
-  "id": 1,
-  "paymentMethod": "PIX",
-  "pixCopyPaste": "00020101021226820014br.gov.bcb.pix2560pix-h.asaas.com/qr/cobv/b8a8cf62-be26-4a97-86af-e106625e0bda5204000053039865802BR5925Marcos Antonio Cardoso Da6006Osasco61080626327562070503***63049A18",
-  "paymentStatus": "PENDING",
-  "amount": 285.00,
-  "createdAt": "12/10/2026 19:07:43",
-  "paidAt": null
-}

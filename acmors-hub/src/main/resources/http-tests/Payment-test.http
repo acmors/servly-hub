@@ -22,7 +22,19 @@ GET http://localhost:8080/webhook/dev@example.com
 GET localhost:8081/api/payments/1
 Content-Type: application/json
 
+###
+POST http://localhost:8081/api/webhooks/asaas
+Content-Type: application/json
+asaas-access-token: pix-sandbox
 
+{
+  "id": "evt_test_001",
+  "event": "PAYMENT_RECEIVED",
+  "payment": {
+    "id": "pay_fm51mogeka0mdgs6",
+    "value": 285.0
+  }
+}
 
 
 

@@ -1,0 +1,6 @@
+2026-10-18 16:51:56.227080-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found (this database is empty); SQL statement:
+select c1_0.id from company c1_0 where c1_0.name=? fetch first ? rows only [42104-240]
+2026-10-18 16:52:12.135691-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found (this database is empty); SQL statement:
+select c1_0.id from company c1_0 where c1_0.name=? fetch first ? rows only [42104-240]

@@ -5,17 +5,17 @@ spring:
     name: acmors-hub
 
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:file:./data/mydb
     username: sa
     password: password
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-
-pix:
-  webhook:
-    secret: pix-sandbox
+    hibernate:
+      ddl-auto: update
 
 asaas:
+  webhook:
+    token: pix-sandbox
   base-url: https://api-sandbox.asaas.com/v3
   api-key:
