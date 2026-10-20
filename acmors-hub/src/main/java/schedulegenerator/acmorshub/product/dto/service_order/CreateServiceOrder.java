@@ -1,4 +1,4 @@
-package schedulegenerator.acmorshub.product.dto;
+package schedulegenerator.acmorshub.product.dto.service_order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import schedulegenerator.acmorshub.product.dto.CreateServiceOrder;
-import schedulegenerator.acmorshub.product.dto.ServiceOrderResponse;
+import schedulegenerator.acmorshub.product.dto.service_order.CreateServiceOrder;
+import schedulegenerator.acmorshub.product.dto.service_order.ServiceOrderResponse;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
 
 @RestController

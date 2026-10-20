@@ -1,4 +1,4 @@
-package schedulegenerator.acmorshub.product.dto;
+package schedulegenerator.acmorshub.product.dto.service_order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +11,7 @@ import java.math.BigDecimal;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateOrderServiceItem {
-
+public class OrderServiceItemResponse {
     private Long productId;
     private Integer quantity;
     private BigDecimal discount;

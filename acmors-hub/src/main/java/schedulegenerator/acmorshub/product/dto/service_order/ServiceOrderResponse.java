@@ -1,10 +1,9 @@
-package schedulegenerator.acmorshub.product.dto;
+package schedulegenerator.acmorshub.product.dto.service_order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import schedulegenerator.acmorshub.product.entities.ServiceOrderItem;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

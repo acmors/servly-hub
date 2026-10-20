@@ -3,13 +3,10 @@ package schedulegenerator.acmorshub.staff.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import schedulegenerator.acmorshub.staff.dto.CreateStaff;
 import schedulegenerator.acmorshub.staff.dto.ResponseStaff;
-import schedulegenerator.acmorshub.staff.entities.Staff;
+import schedulegenerator.acmorshub.staff.dto.UpdateStaff;
 import schedulegenerator.acmorshub.staff.service.StaffService;
 
 @RestController
@@ -22,6 +19,16 @@ public class StaffController {
     @PostMapping
     public ResponseEntity<ResponseStaff> create(@RequestBody CreateStaff create) {
         return ResponseEntity.status(HttpStatus.CREATED).body(staffService.create(create));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseStaff> update(@PathVariable Long id, @RequestBody UpdateStaff update) {
+        return ResponseEntity.ok().body(staffService.updateStaff(id, update));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseStaff> delete(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(staffService.deleteStaffById(id));
     }
 
 }

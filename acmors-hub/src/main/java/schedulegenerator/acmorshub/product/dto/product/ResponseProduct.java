@@ -1,5 +1,4 @@
-package schedulegenerator.acmorshub.product.dto;
-
+package schedulegenerator.acmorshub.product.dto.product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,8 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProduct {
+public class ResponseProduct {
+
     private String name;
     private String description;
     private BigDecimal price;

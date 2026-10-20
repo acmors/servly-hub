@@ -1,4 +1,4 @@
-package schedulegenerator.acmorshub.product.dto;
+package schedulegenerator.acmorshub.product.dto.service_order;
 
 import org.springframework.stereotype.Component;
 import schedulegenerator.acmorshub.product.entities.ServiceOrderItem;
