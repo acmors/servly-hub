@@ -50,6 +50,7 @@ public class CustomerService {
     public ResponseCustomer delete(Long id) {
         Customer customer = findCustomerById(id);
         customerRepository.delete(customer);
+        return CustomerMapper.toDto(customer);
     }
 
 }

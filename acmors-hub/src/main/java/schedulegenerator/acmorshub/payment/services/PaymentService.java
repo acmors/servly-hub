@@ -102,7 +102,7 @@ public class PaymentService {
 
          //faz uma requisição POST na API do ASAAS para confirmar um determinado pagamento via Id.
          restClient.post()
-                 .uri("/sandbox/payment/{id}/confirm", payment.getProviderTransactionId())
+                 .uri("/payments/{id}/confirm", payment.getProviderTransactionId())
                  .retrieve()
                  .toBodilessEntity();
 

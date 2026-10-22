@@ -1,4 +1,4 @@
-POST localhost:8081/api/payments
+POST localhost:8080/api/payments
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ GET http://localhost:8080/webhook/dev@example.com
 
 
 ###
-GET localhost:8081/api/payments/1
+GET localhost:8080/api/payments/1
 Content-Type: application/json
 
 ###
@@ -36,5 +36,8 @@ asaas-access-token: pix-sandbox
   }
 }
 
+###
+POST localhost:8080/webhooks/asaas
+Content-Type: application/json
 
 
