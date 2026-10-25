@@ -1,5 +1,6 @@
 package schedulegenerator.acmorshub.company.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class CompanyController {
     private final CompanyService companyService;
 
     @PostMapping
-    public ResponseEntity<ResponseCompany> create(@RequestBody CreateCompany company) {
+    public ResponseEntity<ResponseCompany> create(@RequestBody @Valid CreateCompany company) {
         return ResponseEntity.status(HttpStatus.CREATED).body(companyService.create(company));
     }
 

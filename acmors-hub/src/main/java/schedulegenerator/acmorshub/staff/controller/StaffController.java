@@ -1,5 +1,6 @@
 package schedulegenerator.acmorshub.staff.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class StaffController {
     private final StaffService staffService;
 
     @PostMapping
-    public ResponseEntity<ResponseStaff> create(@RequestBody CreateStaff create) {
+    public ResponseEntity<ResponseStaff> create(@RequestBody @Valid CreateStaff create) {
         return ResponseEntity.status(HttpStatus.CREATED).body(staffService.create(create));
     }
 

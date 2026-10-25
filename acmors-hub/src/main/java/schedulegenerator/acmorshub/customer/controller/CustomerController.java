@@ -1,5 +1,6 @@
 package schedulegenerator.acmorshub.customer.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<ResponseCustomer> createCustomer(@RequestBody CreateCustomer customer) {
+    public ResponseEntity<ResponseCustomer> createCustomer(@RequestBody @Valid CreateCustomer customer) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerService.createCustomer(customer));
     }
 

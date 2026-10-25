@@ -1,5 +1,6 @@
 package schedulegenerator.acmorshub.product.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ResponseProduct> create(@RequestBody CreateProduct createProduct){
+    public ResponseEntity<ResponseProduct> create(@RequestBody @Valid CreateProduct createProduct){
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(createProduct));
     }
 
