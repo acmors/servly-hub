@@ -23,3 +23,7 @@ Content-Type: application/json
     }
   ]
 }
+
+###
+GET localhost:8080/api/service-order/1
+Content-Type: application/json

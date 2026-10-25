@@ -7,11 +7,11 @@ Content-Type: application/json
 }
 
 ###
-POST localhost:8081/api/payments/1/pay
+POST localhost:8080/api/payments/1/pay
 Content-Type: application/json
 
 ###
-POST localhost:8081/api/test/pix/charge
+POST localhost:8080/api/test/pix/charge
 Content-Type: application/json
 
 ###
@@ -23,7 +23,7 @@ GET localhost:8080/api/payments/1
 Content-Type: application/json
 
 ###
-POST http://localhost:8081/api/webhooks/asaas
+POST http://localhost:8080/api/webhooks/asaas
 Content-Type: application/json
 asaas-access-token: pix-sandbox
 

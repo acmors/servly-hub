@@ -28,4 +28,6 @@ public class PaymentController {
     public ResponseEntity<ResponsePayment> getPayment(@PathVariable Long id){
         return ResponseEntity.ok(paymentService.getPayment(id));
     }
+
+
 }

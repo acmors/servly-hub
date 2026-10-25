@@ -3,10 +3,7 @@ package schedulegenerator.acmorshub.product.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import schedulegenerator.acmorshub.product.dto.service_order.CreateServiceOrder;
 import schedulegenerator.acmorshub.product.dto.service_order.ServiceOrderResponse;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
@@ -21,5 +18,10 @@ public class ServiceOrderController {
     @PostMapping
     public ResponseEntity<ServiceOrderResponse> createOrder(@RequestBody CreateServiceOrder createServiceOrder) {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceOrderService.createOrder(createServiceOrder));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ServiceOrderResponse> findById(@PathVariable Long id){
+        return ResponseEntity.ok(serviceOrderService.findByIdDto(id));
     }
 }

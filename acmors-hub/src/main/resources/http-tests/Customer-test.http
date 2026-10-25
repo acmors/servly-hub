@@ -2,9 +2,10 @@ POST localhost:8080/api/customer
 Content-Type: application/json
 
 {
-  "FullName": "Marcos",
-  "Document":"55049165008",
-  "Email":"",
-  "Password":"",
-  "Phone":""
+  "fullName": "Marcos",
+  "document":"55049165008",
+  "email":"",
+  "password":"",
+  "phone":"",
+  "companyId": 1
 }

@@ -75,4 +75,9 @@ public class ServiceOrderService {
         return serviceOrderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order Not Found"));
     }
+
+    public ServiceOrderResponse findByIdDto(Long id){
+        ServiceOrder order = findById(id);
+        return ServiceOrderMapper.toDTO(order);
+    }
 }

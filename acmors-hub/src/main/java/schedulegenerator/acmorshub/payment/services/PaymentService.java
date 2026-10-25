@@ -12,6 +12,8 @@ import schedulegenerator.acmorshub.payment.entities.enums.PaymentStatus;
 import schedulegenerator.acmorshub.payment.integration.asaas.AsaasCustomerService;
 import schedulegenerator.acmorshub.payment.repository.PaymentRepository;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
+import schedulegenerator.acmorshub.product.entities.enums.ServiceOrderStatus;
+import schedulegenerator.acmorshub.product.repository.ServiceOrderRepository;
 import schedulegenerator.acmorshub.product.service.ServiceOrderService;
 
 import java.math.BigDecimal;
@@ -25,17 +27,20 @@ public class PaymentService {
     private final ServiceOrderService serviceOrderService;
     private final AsaasCustomerService asaasCustomerService;
     private final RestClient restClient;
+    private final ServiceOrderRepository serviceOrderRepository;
 
-    public PaymentService(PaymentRepository paymentRepository, ServiceOrderService serviceOrderService, AsaasCustomerService asaasCustomerService, @Qualifier("asaasRestClient") RestClient restClient) {
+    public PaymentService(PaymentRepository paymentRepository, ServiceOrderService serviceOrderService, AsaasCustomerService asaasCustomerService, @Qualifier("asaasRestClient") RestClient restClient,
+                          ServiceOrderRepository serviceOrderRepository) {
         this.paymentRepository = paymentRepository;
         this.serviceOrderService = serviceOrderService;
         this.asaasCustomerService = asaasCustomerService;
         this.restClient = restClient;
+        this.serviceOrderRepository = serviceOrderRepository;
     }
 
     public ResponsePayment createPayment(CreatePayment createPayment) {
         //Busca ordem de pagamento
-        ServiceOrder serviceOrder =serviceOrderService.findById(createPayment.getServiceOrderId());
+        ServiceOrder serviceOrder = serviceOrderService.findById(createPayment.getServiceOrderId());
 
         //Busca ou cria cliente no Asaas
         String asaasCustomId = asaasCustomerService.getOrCreateAsaasCustomer(serviceOrder.getCustomer());
@@ -75,6 +80,10 @@ public class PaymentService {
         payment.setCreateAt(LocalDateTime.now());
         payment.setAmount(serviceOrder.getTotalPrice());
         payment.setProviderTransactionId(asaasPaymentId);
+
+        //muda status do ServiceOrder para WAITING
+        serviceOrder.setServiceOrderStatus(ServiceOrderStatus.WAITING_PAYMENT);
+        ServiceOrder saved = serviceOrderRepository.save(serviceOrder);
 
         //Se o PixResponse nao foi null, vamos ter o Copia e Cola e o QrCode
         if (pixResponse != null && pixResponse.get("payload") != null){
@@ -130,8 +139,12 @@ public class PaymentService {
 
         payment.setPaymentStatus(PaymentStatus.PAID);
         payment.setPaidAt(LocalDateTime.now());
-
         paymentRepository.save(payment);
+
+        ServiceOrder serviceOrder = payment.getServiceOrder();
+        serviceOrder.setServiceOrderStatus(ServiceOrderStatus.PAID);
+        serviceOrder.setUpdatedAt(LocalDateTime.now());
+        serviceOrderRepository.save(serviceOrder);
     }
 
     public ResponsePayment getPayment(Long paymentId) {
