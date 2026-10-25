@@ -29,6 +29,7 @@ public class StaffService {
         staff.setEmail(create.getEmail());
         staff.setPassword(create.getPassword());
         staff.setRole(Role.company_employee);
+        staff.setCompany(company);
         staffRepository.save(staff);
 
         return StaffMapper.toDto(staff);

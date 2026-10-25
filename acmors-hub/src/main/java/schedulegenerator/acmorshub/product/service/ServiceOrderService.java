@@ -13,6 +13,7 @@ import schedulegenerator.acmorshub.product.dto.service_order.ServiceOrderRespons
 import schedulegenerator.acmorshub.product.entities.Product;
 import schedulegenerator.acmorshub.product.entities.ServiceOrder;
 import schedulegenerator.acmorshub.product.entities.ServiceOrderItem;
+import schedulegenerator.acmorshub.product.entities.enums.ServiceOrderStatus;
 import schedulegenerator.acmorshub.product.repository.ProductRepository;
 import schedulegenerator.acmorshub.product.repository.ServiceOrderRepository;
 import schedulegenerator.acmorshub.staff.entities.Staff;
@@ -48,6 +49,7 @@ public class ServiceOrderService {
         serviceOrder.setNote(create.getNote());
         serviceOrder.setCompany(company);
         serviceOrder.setCreatedAt(LocalDateTime.now());
+        serviceOrder.setServiceOrderStatus(ServiceOrderStatus.OPEN);
 
         for(CreateOrderServiceItem itemRequest : create.getItems()){
 

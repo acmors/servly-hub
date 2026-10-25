@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.customer.entities.Customer;
+import schedulegenerator.acmorshub.product.entities.enums.ServiceOrderStatus;
 import schedulegenerator.acmorshub.staff.entities.Staff;
 
 import java.math.BigDecimal;
@@ -37,6 +38,7 @@ public class ServiceOrder {
     @JoinColumn(name = "staff_id", nullable = false)
     private Staff staff;
 
+    private ServiceOrderStatus serviceOrderStatus;
     private String note;
 
     @OneToMany(mappedBy = "serviceOrder", cascade = CascadeType.ALL, orphanRemoval = true)

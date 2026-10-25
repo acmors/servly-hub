@@ -8,6 +8,7 @@ public class StaffMapper {
 
     public static ResponseStaff toDto(Staff staff){
         return new ResponseStaff(
+                staff.getId(), 
                 staff.getName(),
                 staff.getEmail()
         );

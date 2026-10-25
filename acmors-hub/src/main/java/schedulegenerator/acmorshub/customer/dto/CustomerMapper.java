@@ -8,10 +8,12 @@ public class CustomerMapper {
 
     public static ResponseCustomer toDto(Customer customer) {
         return new ResponseCustomer(
+                customer.getId(),
                 customer.getFullName(),
                 customer.getDocument(),
                 customer.getEmail(),
-                customer.getPhone()
+                customer.getPhone(),
+                customer.getCompany().getId()
         );
     }
 }

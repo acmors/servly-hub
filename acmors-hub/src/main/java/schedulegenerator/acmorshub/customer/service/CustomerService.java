@@ -3,6 +3,8 @@ package schedulegenerator.acmorshub.customer.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import schedulegenerator.acmorshub.company.entities.Company;
+import schedulegenerator.acmorshub.company.service.CompanyService;
 import schedulegenerator.acmorshub.customer.dto.CreateCustomer;
 import schedulegenerator.acmorshub.customer.dto.CustomerMapper;
 import schedulegenerator.acmorshub.customer.dto.ResponseCustomer;
@@ -15,21 +17,25 @@ import schedulegenerator.acmorshub.exceptions.ResourceNotFoundExeption;
 @RequiredArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
+    private final CompanyService companyService;
 
     @Transactional
     public ResponseCustomer createCustomer(CreateCustomer customer) {
         Customer newCustomer = new Customer();
+        Company company = companyService.findById(customer.getCompanyId());
+
         newCustomer.setFullName(customer.getFullName());
         newCustomer.setEmail(customer.getEmail());
         newCustomer.setPhone(customer.getPhone());
         newCustomer.setPassword(customer.getPassword());
         newCustomer.setDocument(customer.getDocument());
+        newCustomer.setCompany(company);
 
         customerRepository.save(newCustomer);
         return CustomerMapper.toDto(newCustomer);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Customer findCustomerById(Long id) {
         return customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExeption("Customer not found"));
     }

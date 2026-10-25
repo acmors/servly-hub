@@ -21,6 +21,7 @@ public class ServiceOrderMapper {
                 serviceOrder.getStaff().getId(),
                 serviceOrder.getNote(),
                 items,
+                serviceOrder.getServiceOrderStatus(),
                 serviceOrder.getCreatedAt(),
                 serviceOrder.getUpdatedAt(),
                 serviceOrder.getTotalPrice()

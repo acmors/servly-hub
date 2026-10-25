@@ -10,9 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateCustomer {
-    private String FullName;
-    private String Document;
-    private String Email;
-    private String Password;
-    private String Phone;
+    private String fullName;
+    private String document;
+    private String email;
+    private String password;
+    private String phone;
+    private Long companyId;
 }

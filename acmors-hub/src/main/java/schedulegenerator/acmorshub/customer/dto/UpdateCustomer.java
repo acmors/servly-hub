@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateCustomer {
-    private String FullName;
-    private String Document;
-    private String Email;
-    private String Phone;
+    private String fullName;
+    private String document;
+    private String email;
+    private String phone;
 }

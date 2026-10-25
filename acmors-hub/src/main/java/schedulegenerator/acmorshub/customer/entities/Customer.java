@@ -1,13 +1,11 @@
 package schedulegenerator.acmorshub.customer.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import schedulegenerator.acmorshub.company.entities.Company;
 
 @Entity
 @Getter
@@ -20,11 +18,14 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String FullName;
-    private String Document;
-    private String Email;
-    private String Password;
-    private String Phone;
+    private String fullName;
+    private String document;
+    private String email;
+    private String password;
+    private String phone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Company company;
     //Id que seria criado pelo serviço de pagamento externo
     private String asaasCustomerId;
 }

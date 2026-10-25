@@ -8,6 +8,7 @@ public class ProductMapper {
 
     public static ResponseProduct toDto(Product product) {
         return new ResponseProduct(
+                product.getId(),
                 product.getName(),
                 product.getDescription(),
                 product.getPrice()

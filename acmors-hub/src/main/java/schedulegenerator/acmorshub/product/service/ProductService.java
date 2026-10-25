@@ -3,6 +3,8 @@ package schedulegenerator.acmorshub.product.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import schedulegenerator.acmorshub.company.entities.Company;
+import schedulegenerator.acmorshub.company.service.CompanyService;
 import schedulegenerator.acmorshub.exceptions.ResourceNotFoundExeption;
 import schedulegenerator.acmorshub.product.dto.product.CreateProduct;
 import schedulegenerator.acmorshub.product.dto.product.ProductMapper;
@@ -16,14 +18,17 @@ import schedulegenerator.acmorshub.product.repository.ProductRepository;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CompanyService  companyService;
 
     @Transactional
     public ResponseProduct create(CreateProduct createProduct) {
+        Company company = companyService.findById(createProduct.getCompanyId());
 
         Product product = new Product();
         product.setName(createProduct.getName());
         product.setPrice(createProduct.getPrice());
         product.setDescription(createProduct.getDescription());
+        product.setCompany(company);
         productRepository.save(product);
 
         return ProductMapper.toDto(product);

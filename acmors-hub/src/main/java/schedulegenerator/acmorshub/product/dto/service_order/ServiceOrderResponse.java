@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import schedulegenerator.acmorshub.product.entities.enums.ServiceOrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,7 +21,9 @@ public class ServiceOrderResponse {
     private Long staffId;
     private String note;
     private List<OrderServiceItemResponse> createOrderServiceItems;
+    private ServiceOrderStatus serviceOrderStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private BigDecimal totalPrice;
+
 }

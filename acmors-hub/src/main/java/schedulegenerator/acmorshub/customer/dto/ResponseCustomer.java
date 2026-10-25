@@ -10,8 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseCustomer {
-    private String FullName;
-    private String Document;
-    private String Email;
-    private String Phone;
+    private Long id;
+    private String fullName;
+    private String document;
+    private String email;
+    private String phone;
+    private Long companyId;
 }
