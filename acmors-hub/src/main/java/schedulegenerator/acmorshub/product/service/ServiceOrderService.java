@@ -2,10 +2,12 @@ package schedulegenerator.acmorshub.product.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import schedulegenerator.acmorshub.company.entities.Company;
 import schedulegenerator.acmorshub.company.repository.CompanyRepository;
 import schedulegenerator.acmorshub.customer.entities.Customer;
 import schedulegenerator.acmorshub.customer.repository.CustomerRepository;
+import schedulegenerator.acmorshub.exceptions.ResourceNotFoundExeption;
 import schedulegenerator.acmorshub.product.dto.service_order.CreateOrderServiceItem;
 import schedulegenerator.acmorshub.product.dto.service_order.CreateServiceOrder;
 import schedulegenerator.acmorshub.product.dto.service_order.ServiceOrderMapper;
@@ -21,6 +23,7 @@ import schedulegenerator.acmorshub.staff.repository.StaffRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -71,6 +74,7 @@ public class ServiceOrderService {
         return ServiceOrderMapper.toDTO(saved);
     }
 
+    @Transactional
     public ServiceOrder findById(Long id) {
         return serviceOrderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order Not Found"));
@@ -79,5 +83,30 @@ public class ServiceOrderService {
     public ServiceOrderResponse findByIdDto(Long id){
         ServiceOrder order = findById(id);
         return ServiceOrderMapper.toDTO(order);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ServiceOrderResponse> findServiceOrderByCustomerId(Long customerId) {
+
+        if(!customerRepository.existsById(customerId)){
+            throw new ResourceNotFoundExeption("Customer Not Found");
+        }
+
+        return serviceOrderRepository.findServiceOrderByCustomerId(customerId)
+                .stream()
+                .map(ServiceOrderMapper::toDTO)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ServiceOrderResponse> findServiceOrderByCompanyId(Long companyId) {
+        if(!companyRepository.existsById(companyId)){
+            throw new ResourceNotFoundExeption("Company Not Found");
+        }
+
+        return serviceOrderRepository.findServiceOrderCompanyById(companyId)
+                .stream()
+                .map(ServiceOrderMapper::toDTO)
+                .toList();
     }
 }
